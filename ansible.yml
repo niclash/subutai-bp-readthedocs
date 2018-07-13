@@ -1,0 +1,20 @@
+--- 
+
+- hosts: all
+  gather_facts: false
+  remote_user: root
+  tasks: 
+    - name: Ensure python is available
+      raw: test -e /usr/bin/python || apt install -y --allow-unauthenticated python-minimal
+
+    - name: Ensure python-apt is available
+      raw: test -d /usr/share/python-apt || apt install -y --allow-unauthenticated python-apt
+
+    - name: Upgrade
+      raw: apt-get -y --allow-unauthenticated upgrade
+
+- hosts: all
+  remote_user: root
+  roles:
+    - role: readthedocs
+    
