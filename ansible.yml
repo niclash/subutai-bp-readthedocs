@@ -4,6 +4,9 @@
   gather_facts: false
   remote_user: root
   tasks: 
+    - name: Upgrade
+      raw: apt-get -y --allow-unauthenticated upgrade
+
     - name: Ensure python is available
       raw: test -e /usr/bin/python || apt install -y --allow-unauthenticated python-minimal
 
