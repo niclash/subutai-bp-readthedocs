@@ -19,5 +19,3 @@ galaxy_info:
     - web
     - system
 
-dependencies:
-  - { role: geerlingguy.pip }
