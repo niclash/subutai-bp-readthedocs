@@ -16,5 +16,6 @@
 - hosts: all
   remote_user: root
   roles:
-    - role: readthedocs
-    
+    - role: ansible-role-pip
+    - role: ansible-role-readthedocs
+

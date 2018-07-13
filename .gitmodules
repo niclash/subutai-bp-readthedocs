@@ -1,0 +1,6 @@
+[submodule "roles/ansible-role-pip"]
+	path = roles/ansible-role-pip
+	url = https://github.com/geerlingguy/ansible-role-pip.git
+[submodule "roles/ansible-role-readthedocs"]
+	path = roles/ansible-role-readthedocs
+	url = https://github.com/solutionDrive/ansible-role-readthedocs.git
