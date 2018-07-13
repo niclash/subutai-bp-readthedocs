@@ -1,7 +1,7 @@
 {
     "name": "Read The Docs",
     "description": "This blueprint will set up a 'Read The Docs' system.",
-    "version": "0.3.0",
+    "version": "0.5.0",
     "author": "Niclas Hedhman",
     "containers": [
         {

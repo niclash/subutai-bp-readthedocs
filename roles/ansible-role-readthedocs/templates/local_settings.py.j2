@@ -1,0 +1,12 @@
+import os
+
+# Directory that the project lives in, aka ../..
+SITE_ROOT = '/'.join(os.path.dirname(__file__).split('/')[0:-2])
+
+PRODUCTION_DOMAIN = '{{ rtd_public_host }}:{{ rtd_public_port }}'
+SLUMBER_API_HOST = 'http://127.0.0.1'
+SLUMBER_USERNAME = '{{ rtd_api_username }}'
+SLUMBER_PASSWORD = '{{ rtd_api_password }}'
+
+DEBUG = {{ rtd_debug_mode }}
+ALLOW_PRIVATE_REPOS = True

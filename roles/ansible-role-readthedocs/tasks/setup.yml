@@ -1,0 +1,68 @@
+---
+- name: Clone the Read the Docs repository
+  git:
+    repo: "https://github.com/rtfd/readthedocs.org.git"
+    dest: "{{ rtd_installation_path }}"
+  register: rtd_repository_clone
+  notify:
+    - restart readthedocs
+
+- name: Install python requirements via pip
+  pip:
+    requirements: "{{ rtd_installation_path }}/requirements.txt"
+  when: rtd_repository_clone.changed
+  notify:
+    - restart readthedocs
+
+- name: Install sphinx documentation compiler
+  pip:
+    name: sphinx
+
+- name: Install uwsgi for serving application
+  pip:
+    name: uwsgi
+
+- name: Install mysql driver
+  pip:
+    name: MySQL-python
+
+- name: Copy base configuration file
+  template:
+    src: "prod.py.j2"
+    dest: "{{ rtd_installation_path }}/readthedocs/settings/prod.py"
+
+- name: Copy local configuration file
+  template:
+    src: "local_settings.py.j2"
+    dest: "{{ rtd_installation_path }}/readthedocs/settings/local_settings.py"
+  notify:
+    - restart readthedocs
+
+- name: Copy wsgi executable file
+  template:
+    src: "wsgi_prod.py"
+    dest: "{{ rtd_installation_path }}/readthedocs/wsgi_prod.py"
+  notify:
+    - restart readthedocs
+
+- name: Run collectstatic
+  command: python manage.py collectstatic --noinput --no-color
+  args:
+    chdir: "{{ rtd_installation_path }}"
+  vars:
+    DJANGO_SETTINGS_MODULE: readthedocs.settings.prod
+  when: rtd_repository_clone.changed
+
+- name: Set owner of installation directory to www-data
+  file:
+    path: "{{ rtd_installation_path }}"
+    state: directory
+    owner: "www-data"
+    group: "www-data"
+    recurse: yes
+  when: rtd_repository_clone.changed
+
+- name: Install uwsgi as systemd service
+  template:
+    src: "uwsgi.service.j2"
+    dest: "/etc/systemd/system/uwsgi.service"

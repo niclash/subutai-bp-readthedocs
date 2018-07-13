@@ -1,0 +1,12 @@
+---
+- name: start readthedocs
+  service:
+    name: uwsgi.service
+    state: started
+    enabled: yes
+
+- name: restart readthedocs
+  service:
+    name: uwsgi.service
+    state: restarted
+    enabled: yes

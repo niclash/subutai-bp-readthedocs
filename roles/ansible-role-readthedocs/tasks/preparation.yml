@@ -1,0 +1,20 @@
+---
+- name: verify that required parameters are set
+  fail: msg="Variable '{{ item }}' is not defined"
+  when: item not in vars
+  with_items:
+     - rtd_api_username
+     - rtd_api_password
+
+- name: Install required apt packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ rtd_packages }}"
+
+- name: Install required apt packages for pdf output
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ rtd_packages_pdf_output }}"
+  when: rtd_enable_pdf_output

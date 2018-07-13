@@ -1,0 +1,49 @@
+---
+rtd_packages:
+  - git
+  - ca-certificates
+  - python-setuptools
+  - build-essential
+  - python-dev
+  - libevent-dev
+  - python2.7-dev
+  - tk8.5
+  - tcl8.5
+  - tk8.5-dev
+  - tcl8.5-dev
+  - libxml2-dev
+  - libxslt-dev
+  - libevent-dev
+  - dvipng
+  - graphviz
+  - libxslt1.1
+  - libxml2-dev
+  - libmysqlclient-dev
+
+
+rtd_packages_pdf_output:
+  - texlive
+  - texlive-xetex
+
+rtd_enable_pdf_output: false
+
+rtd_installation_path: "/opt/readthedocs"
+
+nginx_public_host: ""
+nginx_public_port: "80"
+
+rtd_mysql_host: "127.0.0.1"
+rtd_mysql_user: "root"
+rtd_mysql_password: "root"
+rtd_mysql_database: "rtd_test"
+
+rtd_internal_host: "127.0.0.1"
+rtd_internal_port: "8000"
+rtd_public_host: "{{ nginx_public_host }}"
+rtd_public_port: "{{ nginx_public_port }}"
+
+
+rtd_api_username: ''
+rtd_api_password: ''
+
+rtd_debug_mode: "True"

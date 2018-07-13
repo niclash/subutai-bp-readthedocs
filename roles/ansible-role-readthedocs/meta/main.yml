@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  role_name: readthedocs
+  author: solutionDrive GmbH
+  description: Install a Read the Docs server instance.
+  company: solutionDrive
+
+  license: MIT
+
+  min_ansible_version: 2.1
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+        - xenial
+
+  galaxy_tags:
+    - web
+    - system
+
+dependencies:
+  - { role: geerlingguy.pip }
