@@ -1,7 +1,7 @@
 {
     "name": "Read The Docs",
     "description": "This blueprint will set up a 'Read The Docs' system.",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "author": "Niclas Hedhman",
     "containers": [
         {
@@ -13,7 +13,7 @@
                 {
                     "protocol": "http",
                     "domain": "${domainName}",
-                    "internal-port": "80",
+                    "internal-port": "8000",
                     "external-port": "80"
                 }
             ]
