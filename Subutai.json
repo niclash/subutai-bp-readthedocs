@@ -31,6 +31,8 @@
         "extra-vars": [
             { "key": "rtd_debug_mode", "value": "True" },
             { "key": "site_title", "value": "${siteTitle}" },
+            { "key": "admin.user", "value": "${adminUser}" },
+            { "key": "admin.email", "value": "${adminEmail}" },
             { "key": "nginx_public_host", "value": "${domainName}" },
             { "key": "rtd_api_username", "value": "${apiUserName}" },
             { "key": "rtd_api_password", "value": "${apiPassword}" }

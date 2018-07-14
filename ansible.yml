@@ -13,5 +13,7 @@
   remote_user: root
   roles:
     - role: ansible-role-mysql
+    - role: ansible-role-nginx
     - role: ansible-role-pip
     - role: ansible-role-readthedocs
+
