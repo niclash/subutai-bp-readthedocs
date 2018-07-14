@@ -46,6 +46,14 @@
     - restart readthedocs
 
 - name: Run collectstatic
+  command: python manage.py migrate
+  args:
+    chdir: "{{ rtd_installation_path }}"
+  vars:
+    DJANGO_SETTINGS_MODULE: readthedocs.settings.prod
+  when: rtd_repository_clone.changed
+
+- name: Run collectstatic
   command: python manage.py collectstatic --noinput --no-color
   args:
     chdir: "{{ rtd_installation_path }}"

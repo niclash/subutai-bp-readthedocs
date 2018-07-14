@@ -35,7 +35,7 @@ nginx_public_port: "80"
 rtd_mysql_host: "127.0.0.1"
 rtd_mysql_user: "root"
 rtd_mysql_password: "root"
-rtd_mysql_database: "rtd_test"
+rtd_mysql_database: "rtd"
 
 rtd_internal_host: "127.0.0.1"
 rtd_internal_port: "8000"
