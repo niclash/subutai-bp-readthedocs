@@ -23,4 +23,4 @@
     - name: Intall nginx config
       template:
         src: default.j2
-        dest: /etc/ngix/sites-available/default
+        dest: /etc/nginx/sites-available/default
