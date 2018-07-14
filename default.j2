@@ -1,15 +1,15 @@
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-        server_name _;
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+    server_name _;
 
-        location / {
-            uwsgi_pass unix:///tmp/uwsgi.sock;
-            include uwsgi_params;
+    location /
+    {
+        uwsgi_pass unix:///tmp/uwsgi.sock;
+        include uwsgi_params;
 
-            try_files $uri $uri/ =404;
-        }
+        try_files $uri $uri/ =404;
     }
 }
