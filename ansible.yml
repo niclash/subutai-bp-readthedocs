@@ -17,6 +17,8 @@
     - role: ansible-role-pip
     - role: ansible-role-readthedocs
 
+- hosts: all
+  remote_user: root
   tasks:
     - name: Intall nginx config
       template:
